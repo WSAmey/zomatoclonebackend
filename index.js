@@ -4,9 +4,7 @@ import dotenv from "dotenv"
 import route from "./routes/restaurRoute.js";
 import cors from 'cors';
 import {Stripe} from "stripe";
-const PORT=process.env.PORT || 5000
 
-const MONGOURL= process.env.MONGO_URL
 
 //in front end we use publishable key and in backend we have to use secret key
 
@@ -18,6 +16,10 @@ const app=express();
 app.use(express.json()); //this will parse request body in json
 app.use(cors());
 dotenv.config();
+
+const PORT=process.env.PORT || 5000
+
+const MONGOURL= process.env.MONGO_URL
 const stripe = new Stripe(process.env.SEC_Key);
 
 let uemail,totalamount,phoneno,ordemail,ordaddress,restname,restcity,restlocality,restimage;
